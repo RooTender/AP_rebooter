@@ -50,7 +50,7 @@ del loginInput
 
 passwordFile.close()
 
-elements = ("c_mu25", "c_mu27")#, "c_rr14", "c_st28")
+elements = ("c_mu25", "c_mu27", "c_rr14", "c_st28")
 for element in elements:
     elementToClick = getElement(element, By.ID)
     elementToClick.click()
