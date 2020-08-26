@@ -4,6 +4,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+from time import sleep
+
+CHROMEDRIVER_PATH = r"C:\Program Files (x86)\chromedriver.exe"
+
+driverOptions = Options()
+driverOptions.headless = True
 
 passwordFilePath = "./routerPass.txt"
 
@@ -34,7 +41,7 @@ def getElement(elementName, by, timeout = 10):
 
 checkIfPasswordExist()
 
-driver = webdriver.Chrome(r"C:\Program Files (x86)\chromedriver.exe")
+driver = webdriver.Chrome(CHROMEDRIVER_PATH, options=driverOptions)
 driver.get("http://192.168.0.1/")
 
 loginInput = getElement("loginPassword", By.ID)
@@ -54,6 +61,7 @@ elements = ("c_mu25", "c_mu27", "c_rr14", "c_st28")
 for element in elements:
     elementToClick = getElement(element, By.ID)
     elementToClick.click()
+sleep(3)
 
 print("Success!")
 
